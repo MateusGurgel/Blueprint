@@ -12,5 +12,5 @@ def instantiate_blueprint(
         template_content: str = instantiate_template(template, blueprint_path, template_variables)
         template_instance_path: str = os.path.join(destination_path, template)
 
-        with open(template_instance_path, 'w') as file:
+        with open(template_instance_path, 'w', encoding='utf-8') as file:
             file.write(template_content)
