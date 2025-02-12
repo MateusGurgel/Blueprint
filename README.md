@@ -1,0 +1,2 @@
+# Blueprint
+A scaffolding generator
