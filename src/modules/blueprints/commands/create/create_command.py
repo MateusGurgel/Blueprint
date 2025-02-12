@@ -6,6 +6,8 @@ import typer
 from modules.blueprints.instantiate_blueprint import instantiate_blueprint
 from modules.templates.get_templates_from_blueprint import get_templates_from_blueprint
 
+from modules.blueprints.get_blue_print_variables import get_blueprint_variables
+
 app = typer.Typer()
 
 @app.command()
@@ -28,4 +30,10 @@ def create(
 
     templates: list[str] = get_templates_from_blueprint(blueprint_path, blueprint_name)
 
-    instantiate_blueprint(templates, blueprint_path, destination, {"name": "Mateus"})
+    variables_list: list[str] = get_blueprint_variables(templates, blueprint_path)
+    variables: dict[str, str] = {}
+
+    for variable in variables_list:
+        variables[variable] = input(f"Qual é o valor dá variável {variable}: ")
+
+    instantiate_blueprint(templates, blueprint_path, destination, variables)
