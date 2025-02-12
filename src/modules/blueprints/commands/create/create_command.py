@@ -34,6 +34,6 @@ def create(
     variables: dict[str, str] = {}
 
     for variable in variables_list:
-        variables[variable] = input(f"Qual é o valor dá variável {variable}: ")
+        variables[variable] = input(f"What is the value of the variable {variable}? ")
 
     instantiate_blueprint(templates, blueprint_path, destination, variables)
