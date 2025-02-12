@@ -28,4 +28,4 @@ def create(
 
     templates: list[str] = get_templates_from_blueprint(blueprint_path, blueprint_name)
 
-    instantiate_blueprint(templates, blueprint_path, destination)
+    instantiate_blueprint(templates, blueprint_path, destination, {"name": "Mateus"})
