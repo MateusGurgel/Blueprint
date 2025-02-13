@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from modules.templates.instantiate_template import instantiate_template
+from blprint.modules.templates.instantiate_template import instantiate_template
 
 def instantiate_blueprint(
         templates: list[str],

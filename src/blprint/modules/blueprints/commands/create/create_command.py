@@ -1,12 +1,12 @@
 from pathlib import Path
-from typing import Dict, Any, Optional, Annotated
+from typing import Optional, Annotated
 
 import typer
 
-from modules.blueprints.instantiate_blueprint import instantiate_blueprint
-from modules.templates.get_templates_from_blueprint import get_templates_from_blueprint
+from blprint.modules.blueprints.instantiate_blueprint import instantiate_blueprint
+from blprint.modules.templates.get_templates_from_blueprint import get_templates_from_blueprint
 
-from modules.blueprints.get_blue_print_variables import get_blueprint_variables
+from blprint.modules.blueprints.get_blue_print_variables import get_blueprint_variables
 
 app = typer.Typer()
 
