@@ -1,5 +1,5 @@
 # Blueprint
-The easiest way to generate boilerplate code.
+The easiest way to generate universal boilerplate code.
 
 ## Installation
 
