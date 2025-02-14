@@ -3,12 +3,12 @@ from typing import Optional, Annotated
 
 import typer
 
+from blprint.modules.blueprints.get_blue_print_variables import get_blueprint_variables
 from blprint.modules.blueprints.instantiate_blueprint import instantiate_blueprint
 from blprint.modules.templates.get_templates_from_blueprint import get_templates_from_blueprint
 
-from blprint.modules.blueprints.get_blue_print_variables import get_blueprint_variables
-
 app = typer.Typer()
+
 
 @app.command()
 def create(
@@ -16,7 +16,6 @@ def create(
         destination: Path,
         blueprint_folder_path: Annotated[Optional[Path], typer.Argument()] = "./blueprints"
 ):
-
     if not destination.exists():
         raise typer.BadParameter(f"Destination {destination} does not exist")
 
@@ -34,6 +33,6 @@ def create(
     variables: dict[str, str] = {}
 
     for variable in variables_list:
-        variables[variable] = input(f"What is the value of the variable {variable}? ")
+        variables[variable] = input(f"Value for '{variable}': ")
 
     instantiate_blueprint(templates, blueprint_path, destination, variables)
