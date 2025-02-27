@@ -13,9 +13,7 @@ def instantiate_blueprint(
 ):
     for template in templates:
         template_content: str = instantiate_template(template, blueprint_path, template_variables)
-        print(template)
         renamed_template = template.replace(".template", '')
-        print(renamed_template)
         renamed_template = format_string(renamed_template, template_variables)
 
         template_instance_path: str = os.path.join(destination_path, renamed_template)
