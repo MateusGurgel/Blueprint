@@ -1,4 +1,6 @@
 name: Auto Increment Tag
+permissions:
+  contents: write
 
 on:
   push:
@@ -15,7 +17,7 @@ jobs:
       - name: Obter a última tag
         id: get_tag
         run: |
-          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
           echo "Última tag: $LAST_TAG"
           echo "last_tag=$LAST_TAG" >> $GITHUB_ENV
 
@@ -23,7 +25,11 @@ jobs:
         id: version
         run: |
           LAST_TAG=${{ env.last_tag }}
-          NEW_TAG=$(echo $LAST_TAG | awk -F. '{print $1"."$2"."$3+1}')
+          # Divide a versão nos pontos (assumindo formato X.Y.Z)
+          VERSION_PARTS=(${LAST_TAG//./ })
+          PATCH=${VERSION_PARTS[2]}
+          NEW_PATCH=$((PATCH + 1))
+          NEW_TAG="${VERSION_PARTS[0]}.${VERSION_PARTS[1]}.$NEW_PATCH"
           echo "Nova tag: $NEW_TAG"
           echo "new_tag=$NEW_TAG" >> $GITHUB_ENV
 
