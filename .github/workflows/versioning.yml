@@ -1,0 +1,35 @@
+name: Auto Increment Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Obter a última tag
+        id: get_tag
+        run: |
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "Última tag: $LAST_TAG"
+          echo "last_tag=$LAST_TAG" >> $GITHUB_ENV
+
+      - name: Incrementar a versão
+        id: version
+        run: |
+          LAST_TAG=${{ env.last_tag }}
+          NEW_TAG=$(echo $LAST_TAG | awk -F. '{print $1"."$2"."$3+1}')
+          echo "Nova tag: $NEW_TAG"
+          echo "new_tag=$NEW_TAG" >> $GITHUB_ENV
+
+      - name: Criar e enviar a nova tag
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git tag ${{ env.new_tag }}
+          git push origin ${{ env.new_tag }}
