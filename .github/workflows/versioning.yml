@@ -13,11 +13,13 @@ jobs:
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Obter a última tag
         id: get_tag
         run: |
-          LAST_TAG=$(git describe --tags --abbrev=0 || echo "0.0.0")
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.1")
           echo "Última tag: $LAST_TAG"
           echo "last_tag=$LAST_TAG" >> $GITHUB_ENV
 
