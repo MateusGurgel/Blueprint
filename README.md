@@ -1,7 +1,10 @@
 # Blueprint
-The easiest way to generate universal boilerplate code.
+
+A maneira mais simples e poderosa de gerar código boilerplate universal.
 
 ## Installation
+
+Instale via pip:
 
 ```bash
 pip install blprint
@@ -9,11 +12,13 @@ pip install blprint
 
 ## Setup
 
-* Create a folder called `blueprints` in the root of your project.
-* Create another folder inside called with the name of what are you creating.
-* Create a jinja2 template inside the folder you created with the boilerplate code.
+1. Crie uma pasta chamada `blueprints` na raiz do seu projeto.
+2. Dentro dela, crie uma subpasta nomeada conforme o que você está desenvolvendo.
+3. Adicione um template Jinja2 nessa subpasta com o código boilerplate desejado.
 
 ## Usage
+
+Gere seu blueprint executando:
 
 ```bash
 blueprint create <blueprint_name> <destination>
