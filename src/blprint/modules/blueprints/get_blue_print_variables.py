@@ -3,7 +3,7 @@ from pathlib import Path
 from blprint.modules.templates.get_template_variables import get_template_variables
 
 
-def get_blueprint_variables(templates: list[str], blueprint_path: Path) -> list[set]:
+def get_blueprint_variables(templates: list[str], blueprint_path: Path) -> list[str]:
     variables = set()
 
     for template in templates:
