@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "blprint"
-version = "0.1.7"
+version = "0.1.8"
 description = "A simple scaffolding cli"
 authors = ["Mateus Gurgel <mateusgurgel15@gmail.com>"]
 readme = "README.md"

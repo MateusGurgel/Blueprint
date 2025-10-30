@@ -3,7 +3,7 @@ from typing import Annotated
 
 import typer
 
-from blprint.modules.blueprints.colect_blueprint_values import (
+from blprint.modules.blueprints.collect_blueprint_values import (
     collect_blueprint_variables,
 )
 from blprint.modules.blueprints.format_blueprint_variables import (
